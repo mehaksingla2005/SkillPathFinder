@@ -1,12 +1,27 @@
-import express from 'express';
-import { login, logout, signup } from '../controllers/auth.controller.js';
-
-const router = express.Router();
-
-router.post("/signup",signup);
-
-router.post("/login",login);
-
-router.post("/logout",logout);
-
-export default router;
+import {
+    createRecommendation,
+    getRecommendations,
+    getRecommendationById,
+    updateRecommendation,
+    deleteRecommendation
+  } from '../controllers/recommendation.controller.js';
+  import protectRoute from '../middleware/protectRoute.js';
+  
+  const router = express.Router();
+  
+  // Route to create a new recommendation
+  router.post('/recommendations', protectRoute,createRecommendation);
+  
+  // Route to get all recommendations
+  router.get('/recommendations',protectRoute, getRecommendations);
+  
+  // Route to get a recommendation by ID
+  router.get('/recommendations/:id',protectRoute, getRecommendationById);
+  
+  // Route to update a recommendation by ID
+  router.put('/recommendations/:id',protectRoute, updateRecommendation);
+  
+  // Route to delete a recommendation by ID
+  router.delete('/recommendations/:id',protectRoute, deleteRecommendation);
+  
+  export default router;
