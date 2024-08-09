@@ -8,6 +8,8 @@ import QuestionnaireForm from './components/QuestionnaireForm';
 import RecommendationsPage from './components/RecommendationsPage';
 import UserProfile from './components/Profile';
 import Navbar from './components/Navbar';
+import { ToastContainer } from 'react-toastify'; // Import ToastContainer
+import 'react-toastify/dist/ReactToastify.css'; // Import Toastify CSS
 // import { AuthProvider } from './components/AuthContext';
 
 function App() {
@@ -39,6 +41,7 @@ function App() {
         <Route path = "/profile" element = {<UserProfile/>}></Route>
         {/* Other routes */}
       </Routes>
+      <ToastContainer />
     </Router>
     {/* </AuthProvider> */}
     {/* <UserDashboard user={user} /> */}

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -22,11 +23,13 @@ const LoginPage = () => {
       console.log("UserLogin and token saved")
       // Redirect to the home page
       navigate('/');
+      toast.success("login successfully");
     } catch (error) {
       console.error('Authentication error:', error.response.data);
+      toast.error("Login failed! Please Check your credentials.");
     }
   };
-
+  
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
@@ -51,6 +54,7 @@ const LoginPage = () => {
           <button
             type="submit"
             className="w-full bg-blue-500 text-white py-3 rounded hover:bg-blue-600"
+            
           >
             Login
           </button>
